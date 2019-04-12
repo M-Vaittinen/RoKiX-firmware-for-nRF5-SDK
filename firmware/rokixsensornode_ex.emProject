@@ -153,6 +153,8 @@
     <folder Name="adc">
       <file file_name="src/rokix/adc/battery_measurement.c" />
     </folder>
+    <file file_name="neopixel.c" />
+    <file file_name="neopixel.h" />
   </project>
   <configuration
     Name="Release"

@@ -66,6 +66,13 @@
 #include "platform_functions.h"
 #include "sensors.h"
 #include "battery_measurement.h"
+#include "neopixel.h"
+
+#define NUM_LEDS 5
+/* TBD */
+#define LED_GPIO_PIN 1
+
+static neopixel_strip_t g_led_strip;
 
 #define ADC_REF_VOLTAGE_IN_MILLIVOLTS  600  //!< Reference voltage (in milli volts) used by ADC while doing conversion.
 #define ADC_RES_12BIT                  4096 //!< Maximum digital value for 12-bit ADC conversion.
@@ -88,6 +95,10 @@ struct platform_functions nrf52_funcs;
 #define SCHED_MAX_EVENT_DATA_SIZE      (sizeof(app_internal_evt_t))
 #define SCHED_QUEUE_SIZE               20
 
+static void init_led_strip(void)
+{
+  neopixel_init(&g_led_strip, LED_GPIO_PIN, NUM_LEDS);
+}
 
 /**@brief Function for initializing the application event scheduler.*/
 static void scheduler_init(void)
